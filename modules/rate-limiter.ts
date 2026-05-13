@@ -9,8 +9,8 @@ export function rateLimitKey(
   if (akamaiBot?.includes("intuit")) {
     return {
       key: "akamai-bot-intuit",
-      requestsAllowed: 3,
-      timeWindowMinutes: 5 / 60,
+      requestsAllowed: 2,
+      timeWindowMinutes: .03,
     };
   }
   return undefined;
