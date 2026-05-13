@@ -1,3 +1,48 @@
 {
-  "policies": []
+  "policies": [
+    {
+      "name": "rate-limit-akamai-bot-intuit",
+      "policyType": "rate-limit-inbound",
+      "handler": {
+        "export": "RateLimitInboundPolicy",
+        "module": "$import(@zuplo/runtime)",
+        "options": {
+          "rateLimitBy": "function",
+          "requestsAllowed": 10,
+          "timeWindowMinutes": 1,
+          "identifier": {
+            "module": "$import(./modules/rate-limiter)",
+            "export": "rateLimitKey"
+          }
+        }
+      }
+    },
+    {
+      "name": "quota-path-2",
+      "policyType": "quota-inbound",
+      "handler": {
+        "export": "QuotaInboundPolicy",
+        "module": "$import(@zuplo/runtime)",
+        "options": {
+          "allowances": {
+            "requests": 200
+          },
+          "period": "monthly",
+          "quotaBy": "user",
+          "quotaOnStatusCodes": "200-399"
+        }
+      }
+    },
+    {
+      "name": "quota-logger-path-2",
+      "policyType": "custom-code-inbound",
+      "handler": {
+        "export": "default",
+        "module": "$import(./modules/quota-logger)",
+        "options": {
+          "quotaPolicyName": "quota-path-2"
+        }
+      }
+    }
+  ]
 }
