@@ -18,7 +18,9 @@
             }
           },
           "policies": {
-            "inbound": ["rate-limit-akamai-bot-intuit"]
+            "inbound": [
+              "rate-limit-akamai-bot-intuit"
+            ]
           }
         },
         "operationId": "get-path-1",
@@ -42,7 +44,10 @@
             }
           },
           "policies": {
-            "inbound": ["quota-path-2", "quota-logger-path-2"]
+            "inbound": [
+              "quota-path-2",
+              "quota-logger-path-2"
+            ]
           }
         },
         "operationId": "get-path-2",
