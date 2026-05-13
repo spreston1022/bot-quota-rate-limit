@@ -8,7 +8,7 @@
     "/path-1": {
       "get": {
         "summary": "Path 1",
-        "description": "Rate limited to 10 req/min when the akamai-bot header contains 'intuit'",
+        "description": "Rate limited to 3 req per 5-second window when the akamai-bot header contains 'intuit'",
         "x-zuplo-route": {
           "handler": {
             "export": "urlForwardHandler",

@@ -8,8 +8,8 @@
         "module": "$import(@zuplo/runtime)",
         "options": {
           "rateLimitBy": "function",
-          "requestsAllowed": 10,
-          "timeWindowMinutes": 1,
+          "requestsAllowed": 3,
+          "timeWindowMinutes": 0.0833,
           "identifier": {
             "module": "$import(./modules/rate-limiter)",
             "export": "rateLimitKey"
