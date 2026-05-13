@@ -11,8 +11,11 @@
         "description": "Rate limited to 10 req/min when the akamai-bot header contains 'intuit'",
         "x-zuplo-route": {
           "handler": {
-            "export": "default",
-            "module": "$import(./modules/hello-world)"
+            "export": "urlForwardHandler",
+            "module": "$import(@zuplo/runtime)",
+            "options": {
+              "baseUrl": "https://echo.zuplo.io"
+            }
           },
           "policies": {
             "inbound": ["rate-limit-akamai-bot-intuit"]
@@ -32,8 +35,11 @@
         "description": "Monthly quota of 200 requests with consumption logging",
         "x-zuplo-route": {
           "handler": {
-            "export": "default",
-            "module": "$import(./modules/hello-world)"
+            "export": "urlForwardHandler",
+            "module": "$import(@zuplo/runtime)",
+            "options": {
+              "baseUrl": "https://echo.zuplo.io"
+            }
           },
           "policies": {
             "inbound": ["quota-path-2", "quota-logger-path-2"]
